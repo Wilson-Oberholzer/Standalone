@@ -1,0 +1,89 @@
+class Product:
+   'Common base class for all products'
+   prodCount = 0
+   def __init__(self, brand, model, price, link):
+      self.brand = brand
+      self.model = model
+      self.price = price
+      self.link = link
+      Product.prodCount += 1
+   def displayCount(self):
+     print ("Total Product %d" % Product.prodCount)
+   def displayProduct(self):
+      print ("Brand : ", self.brand) 
+      print ("Model: ", self.model)
+      print ("Price: $", self.price)
+
+'class for standalones'
+class Standalone(Product):
+  standCount = 0
+  def __init__(self, brand, model, price, link, injectorOut, ignitionIn):
+      Product.__init__(self, brand, model, price, link)
+      self.injectorOut = injectorOut
+      self.ignitionIn = ignitionIn
+      Standalone.standCount += 1
+  def displayCount(self):
+    print ("Total Standalones %d" % Standalone.standCount)
+  def GetStandalone(self):
+    return self.Name() + ", " +  self.staffnumber
+
+'class for piggybacks'
+class Piggyback(Product):
+  pigCount = 0
+  def __init__(self, brand, model, price, link, DBW):
+    Product.__init__(self, brand, model, price, link)
+    self.DBW = DBW
+    Piggyback.pigCount += 1
+  def displayCount(self):
+    print ("Total Piggybacks %d" % Piggyback.pigCount)
+
+'class for wideband controllers'
+class widebandCont(Product):
+  wideCount = 0
+  def __init__(self, brand, model, price, link, DBW):
+    Product.__init__(self, brand, model, price, link)
+    self.DBW = DBW
+    widebandCont.wideCount += 1
+  def displayCount(self):
+    print ("Total Wideband Controllers %d" % widebandCont.wideCount)
+
+'class for knock listeners'
+class knockListen(Product):
+  knockCount = 0
+  def __init__(self, brand, model, price, link, datalog):
+    Product.__init__(self, brand, model, price, link)
+    self.datalog = datalog
+    knockListen.knockCount += 1
+  def displayCount(self):
+    print ("Total Knock Listeners %d" % knockListen.knockCount)
+
+'class for vacuum gauges'
+class Vacuum(Product):
+  vacCount = 0
+  def __init__(self, brand, model, price, link, maxPress):
+    Product.__init__(self, brand, model, price, link)
+    self.maxPress = maxPress
+    Vacuum.vacCount += 1
+  def displayCount(self):
+    print ("Total Vacuum Gauges %d" % Vacuum.vacCount)
+
+'class for PNP standalones'
+class PlugNplay(Product):
+  pnpCount = 0
+  def __init__(self, brand, model, price, link, OEM, modelYear):
+    Product.__init__(self, brand, model, price, link)
+    self.OEM = OEM
+    self.modelYear = modelYear
+    PlugNplay.pnpCount += 1
+  def displayCount(self):
+    print ("Total Plug and Play Standalones %d" % PlugNplay.pnpCount)
+
+
+prod1 = Standalone("Adaptronic", "M1200", 855, "https://adaptronicecu.com/collections/all-ecus/products/m1200-modular-ecu-up-to-4-cylinders-2-rotor-max-na6-na8-plug-in-miata-1", 4, 4)
+prod2 = Standalone("Adaptronic", "M2000", 1350, "https://adaptronicecu.com/collections/all-ecus/products/m2000-modular-ecu", 8, 8)
+prod3 = Standalone("Adaptronic", "M6000", 1450, "https://adaptronicecu.com/collections/all-ecus/products/m6000-modular-ecu", 8, 8)
+prod4 = Standalone("AEM", "Series3", 699, "https://www.aemelectronics.com/products/programmable-engine-management-systems/infinity-ecu/Infinity-Series-3", 8, 8)
+prod5 = Standalone("AEM", "Series5", 1400, "https://www.aemelectronics.com/products/programmable-engine-management-systems/infinity-ecu/infinity-series-5", 8, 8)
+prod6 = widebandCont("14point7", "SLC Free 2", 95, "www.14point7.com/products/sigma-lambda-controller-free-2", "NO")
+prod7 = knockListen("DIGH","DEKA", 285, "https://digh.com/product/deka/", "YES")
+prod8 = Standalone("AEM", "Series7", 2397, "https://www.aemelectronics.com/products/programmable-engine-management-systems/infinity-ecu/infinity-series-7", 12, 10)
