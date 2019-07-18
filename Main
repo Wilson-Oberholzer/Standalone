@@ -13,6 +13,7 @@ class Product:
       print ("Brand : ", self.brand) 
       print ("Model: ", self.model)
       print ("Price: $", self.price)
+      print ("Link: ", self.link)
 
 'class for standalones'
 class Standalone(Product):
@@ -26,6 +27,7 @@ class Standalone(Product):
     print ("Total Standalones %d" % Standalone.standCount)
   def GetStandalone(self):
     return self.Name() + ", " +  self.staffnumber
+  features = ["injectorOut", "ignitionIn", "HighCurrentPWM", "LowCurrentPWM", "Tachometer", "InternalMAP", "TPS", "DBW", "ExternalMAP", "Temp", "AuxInput", "PressureIn", "AnalogOxygen", "CASTrigger", "VSSTrigger", "DigitalIO", "Knock", "USB", "SerialIn", "SerialOut", "CAN", "Wifi", "Waterproof", "Memory", 'BuiltInScope", "VariableCam', "Launch", "Traction", "Boost", "Nitrous", "FlexFuel"]
 
 'class for piggybacks'
 class Piggyback(Product):
@@ -36,6 +38,7 @@ class Piggyback(Product):
     Piggyback.pigCount += 1
   def displayCount(self):
     print ("Total Piggybacks %d" % Piggyback.pigCount)
+  features = ["variable Cam", "PC Datalog", "Boost", "Datalog Memory", "Launch", "Injector Out", "Oxygen Remap", "Timing", "Voltage Out", "TPS", "Internal MAP", "MAP Intercept", "Speedometer ReCal", "IAT"]
 
 'class for wideband controllers'
 class widebandCont(Product):
@@ -46,6 +49,7 @@ class widebandCont(Product):
     widebandCont.wideCount += 1
   def displayCount(self):
     print ("Total Wideband Controllers %d" % widebandCont.wideCount)
+  features = ["External Logging", "Lambda Accuracy", "Dual AFR", "Dual Knock", "Headphone Jack"]
 
 'class for knock listeners'
 class knockListen(Product):
@@ -56,6 +60,7 @@ class knockListen(Product):
     knockListen.knockCount += 1
   def displayCount(self):
     print ("Total Knock Listeners %d" % knockListen.knockCount)
+  features = ["External Logging", "Headphone Jack", "Dual Wideband", "CANbus", "Frequency Calculator", "Dual Knock", "RCA Out", "Software Logging", "Internal Logging"]
 
 'class for vacuum gauges'
 class Vacuum(Product):
@@ -66,6 +71,7 @@ class Vacuum(Product):
     Vacuum.vacCount += 1
   def displayCount(self):
     print ("Total Vacuum Gauges %d" % Vacuum.vacCount)
+  features = ["Max Pressure", "Min Pressure"]
 
 'class for PNP standalones'
 class PlugNplay(Product):
@@ -87,3 +93,24 @@ prod5 = Standalone("AEM", "Series5", 1400, "https://www.aemelectronics.com/produ
 prod6 = widebandCont("14point7", "SLC Free 2", 95, "www.14point7.com/products/sigma-lambda-controller-free-2", "NO")
 prod7 = knockListen("DIGH","DEKA", 285, "https://digh.com/product/deka/", "YES")
 prod8 = Standalone("AEM", "Series7", 2397, "https://www.aemelectronics.com/products/programmable-engine-management-systems/infinity-ecu/infinity-series-7", 12, 10)
+
+prod6.displayProduct()
+print ("Total Product(s): %d" % Product.prodCount)
+Categories = ["Standalone", "Piggyback", "Plug & Play", "Knock Listener", "Wideband Controller", "Vacuum Gauge"]
+Category = input("Select a category: ")
+if(Category == "Standalone"):
+  Features = Standalone.features
+elif(Category == "Wideband"):
+  Features = widebandCont.features
+elif(Category == "Piggyback"):
+  Features = Piggyback.features
+elif(Category == "Plug & Play"):
+  Features = PlugNplay.features
+elif(Category == "Knock Listener"):
+  Features = knockListen.features
+elif(Category == "Vacuum Gauge"):
+  Features = Vacuum.features
+else:
+  print("Invalid Selection")
+for x in range(len(Features)): 
+    print(Features[x])
